@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Mi primera página principal</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="encabezado">
+        <nav>
+            <ul>
+                <li><a href="#inicio">INICIO</a></li>
+                <li><a href="#Sobre-mi">QUIÉNES SOMOS</a></li>
+                <li><a href="#Galeria-Productos">PRODUCTOS</a></li>
+                <li><a href="#Contacto">CONTACTO</a></li>
+            </ul>
+        </nav>
+
+        <div class="slides">
+            <img src="{% static 'img/slider/encabezado1.jpg' %}" alt="encabezado1" class="slide active" />
+            <img src="{% static 'img/slider/encabezado2.jpg' %}" alt="encabezado2" class="slide" />
+            <img src="{% static 'img/slider/encabezado3.jpg' %}" alt="encabezado3" class="slide" />
+            <img src="{% static 'img/slider/encabezado4.jpg' %}" alt="encabezado4" class="slide" />
+        </div>
+    </div>
+
+    <script src="assets/scripts/slider.js"></script>
+
+    <!-- Sección principal -->
+    <section>
+        <h1> B E L L A ' S </h1>
+        <p>SIÉNTETE BELLA CON NUESTROS PRODUCTOS</p>
+    </section>
+
+    <!-- Sección "Sobre mí" -->
+    <section>
+        <h2>PRODUCTOS QUE TENEMOS PARA TI</h2>
+        <ul>
+            <p>M A K E U P</p>
+            <p>S K I N C A R E</p>
+            <p>H A I R C A R E</p>
+        </ul>
+
+        <!-- <h1>PRODUCTOS</h1>
+        <section id="Galeria-Productos">
+            {% for producto in productos %}
+                <div class="productos">
+                    {% if producto.imagen %}
+                        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                    
+                    {% endif %}
+                    
+                    <p class="product-name">{{ producto.nombre }}</p>
+                    <p class="product-price">${{ producto.precio }}</p>
+
+            {% endfor %}
+        section> -->
+        <!-- Sección "Catálogo de productos" -->
+        <section id="Galeria-Productos">
+            <div class="galeria">
+                {% for producto in productos %}
+                    <div class="productos">
+                        {% if producto.imagen %}
+                            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+                        
+                        {% endif %}
+                        <p class="product-name">{{ producto.nombre }}</p>
+                        <p class="product-price">${{ producto.precio }}</p>
+                        <a href="{% url 'producto_detalle' producto.id %}" class="buy-now-button">Comprar</a>
+
+                        
+                    </div>
+                {% endfor %}
+
+            </div>
+        </section>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section>
+        <h2>Contacto</h2>
+        <form action="#" method="post">
+            <label for="name">NOMBRE</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">E MAIL</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <label for="message">MENSAJE</label>
+            <textarea id="message" name="message" rows="7"></textarea>
+            <br>
+            <input type="submit" value="Enviar">
+        </form>
+    </section>
+    <script src="{% static 'js/slider.js' %}"></script>
+</body>
+</html>

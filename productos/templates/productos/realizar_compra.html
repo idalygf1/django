@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar compra</title>
+</head>
+<body>
+    <main class="purchase-container">
+        <h1>Realizar Compra</h1>
+        <div class="purchase-info">
+            <p><strong>Producto:</strong> {{ producto.nombre }}</p>
+            <p><strong>Subtotal:</strong> ${{ subtotal }}</p>
+        </div>
+        <form method="post" class="purchase-form">
+            {% csrf_token %}
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            
+            <label for="direccion">Dirección:</label>
+            <textarea id="direccion" name="direccion" required></textarea>
+            
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <button type="submit" class="confirm-button">Confirmar compra</button>
+        </form>
+    </main>
+</body>
+</html>
